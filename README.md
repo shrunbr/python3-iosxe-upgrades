@@ -26,7 +26,9 @@ Launch the script  using `python3 iosxe-upgrades.py`. Throughout the script it'l
 
 ## Example output
 Username: cisco
+
 Password:
+
 testswitch#
 
 
