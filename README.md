@@ -31,18 +31,26 @@ testswitch#
 
 
 ---------- Current System Image ----------
+
 System image file is "flash:packages.conf"
+
 ---------- End ----------
 
 
 TFTP Server IP: 10.10.10.10
+
 TFTP Image File: cat9k_iosxe.16.12.03.SPA.bin
+
 Starting TFTP Transfer, please wait...
 
 
 ----------
 Destination filename [cat9k_iosxe.16.12.03.SPA.bin]? Accessing tftp://10.10.10.10/cat9k_iosxe.16.12.03.SPA.bin...
-Loading cat9k_iosxe.16.12.03.SPA.bin from 10.10.10.10 (via GigabitEthernet0/0): !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!O!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!O!!!!!O!!!!O!!!!O!!!!!!!!!!!!!!!!!!!O!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+Loading cat9k_iosxe.16.12.03.SPA.bin from 10.10.10.10 (via GigabitEthernet0/0): 
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!O!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!O!!!!!O!!!!O!!!!O!!!!!!!!!!!!!!!!!!!O!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 [OK - 805013186 bytes]
 
 805013186 bytes copied in 98.392 secs (8181693 bytes/sec)
@@ -53,8 +61,11 @@ Total time: 0:01:41.961399
 
 
 Verify File MD5 Hash? (yes or no): yes
+
 Expected MD5 Hash: e578d84cc4bd2f4d1f0cdedbf9bd2604
+
 Verifying MD5 Hash, please wait...
+
 MD5 Hash Successful
 
 
@@ -65,9 +76,13 @@ Installing file to flash, please wait...
 Installed image to flash successfully.
 
 
+
 Do you wish to apply the config changes and reboot? (y or n): y
+
 Config Saved.
+
 ...
+
 OSError: Socket is closed
 
 The **OSError: Socket is closed** is normal, the switch abruptly kills the connection which causes this, I am working on a way to have that show more cleanly.
