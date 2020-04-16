@@ -85,6 +85,6 @@ Config Saved.
 
 ...
 
-OSError: Socket is closed
+Socket closed by device.
 
-The **OSError: Socket is closed** is normal, the switch abruptly kills the connection which causes this, I am working on a way to have that show more cleanly.
+The **Socket closed by device.** means the device is most likely about to reboot. Confirm via ping.
