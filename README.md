@@ -2,6 +2,10 @@
 # python3-iosxe-upgrades
 My first python3 script using netmiko to perform IOS-XE software upgrades in a semi-automated fashion.
 
+## Tested Devices
+This has been confirmed working on the following device platforms.
+* Cisco Catalyst 9500 series
+
 ## Requirements
 * Python3
 * Netmiko 3.1.0
