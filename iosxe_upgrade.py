@@ -6,9 +6,13 @@ from netmiko import Netmiko, file_transfer
 import getpass
 import sys
 
+#Prompts
 device = input("Device IP: ")
 user = input("Username: ")
 user_pass = getpass.getpass("Password: ")
+tftp_server = input("TFTP Server IP: ")
+tftp_image = input("TFTP Image File: ")
+verify_md5 = input("Verify File MD5 Hash? (yes or no): ")
 
 net_connect = Netmiko(
     host=device,
@@ -28,8 +32,6 @@ print(current_image)
 print(f"---------- End ----------")
 print("\n")
 # Copy file to device via TFTP
-tftp_server = input("TFTP Server IP: ")
-tftp_image = input("TFTP Image File: ")
 tftp_transfer = f"copy tftp://{tftp_server}/{tftp_image} flash:"
 
 starttime = datetime.now()
@@ -50,8 +52,6 @@ print("Total time: {}".format(end_time - starttime))
 print("\n")
 
 # Verify transfered file MD5 hash
-verify_md5 = input("Verify File MD5 Hash? (yes or no): ")
-
 if "yes" in verify_md5:
     md5_hash = input("Expected MD5 Hash: ")
     verify_md5_cmd = f"verify /md5 flash:{tftp_image} {md5_hash}"
@@ -63,6 +63,7 @@ if "yes" in verify_md5:
         print("MD5 Hash Failed")
         exit()
 if "no" in verify_md5:
+    print("Not verifying MD5 HASH, continuing...")
     pass
 print("\n")
 # Set boot system to packages.conf
@@ -96,8 +97,11 @@ if "y" in confirm_continue:
     net_connect.send_command(write_cmd, expect_string=r'#')
     print("Config Saved.")
     print("Device reloading... Check manually after reload with 'show version' command.")
-    net_connect.send_command(reload_cmd, expect_string='confirm')
-    net_connect.send_command('\n')
+    try:
+        net_connect.send_command(reload_cmd, expect_string='confirm')
+        net_connect.send_command('\n')
+    except:
+        print("Socket closed by device.")
 if "n" in confirm_continue:
     print("Script exiting...")
     net_connect.disconnect()
